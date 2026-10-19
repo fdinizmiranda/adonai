@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head><script src="https://myhub.ia.br/canvas-vendor/tailwind.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Retiro ADONAI 2026: De volta ao Lar. 6, 7 e 8 de novembro na Chácara TMA, São José dos Pinhais.">
+  <title>Retiro ADONAI 2026 | De volta ao Lar</title>
+  <link rel="icon" href="logo-adonai.jpeg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topo">
+  <div class="topo-inner">
+    <a class="marca" href="index.html">
+      <img src="logo-adonai.jpeg" alt="Logo ADONAI">
+      <span>ADONAI</span>
+    </a>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="retiro.html" class="ativo">Retiro</a>
+      <a href="parceiros.html">Parceiros</a>
+      <a href="index.html#atividades">Atividades</a>
+      <a href="index.html#lideranca">Liderança</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <img class="hero-retiro" src="retiro-logo.jpeg" alt="Logo do Retiro ADONAI 2026">
+  <h1>Retiro 2026</h1>
+  <p class="subtitulo">De volta ao Lar</p>
+  <p class="local">6, 7 e 8 de novembro · Chácara TMA · São José dos Pinhais (PR)</p>
+</section>
+
+<section class="secao">
+  <div class="card centro">
+    <p class="rotulo">Faltam</p>
+    <div class="contagem" id="contagem">
+      <div class="unidade"><strong id="dias">00</strong><span>dias</span></div>
+      <div class="unidade"><strong id="horas">00</strong><span>horas</span></div>
+      <div class="unidade"><strong id="minutos">00</strong><span>minutos</span></div>
+      <div class="unidade"><strong id="segundos">00</strong><span>segundos</span></div>
+    </div>
+    <p class="aviso" id="fim" hidden>O retiro começou! Que Deus abençoe cada momento.</p>
+  </div>
+</section>
+
+<section class="secao">
+  <h2>Informações do Retiro</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="detalhe">
+        <div class="numero">1</div>
+        <div>
+          <h3>Datas</h3>
+          <p>6, 7 e 8 de novembro de 2026</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="detalhe">
+        <div class="numero">2</div>
+        <div>
+          <h3>Saída</h3>
+          <p>Sexta-feira, 6 de novembro, às 20h</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="detalhe">
+        <div class="numero">3</div>
+        <div>
+          <h3>Local</h3>
+          <p>Chácara TMA, São José dos Pinhais (PR)</p>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="detalhe">
+        <div class="numero">4</div>
+        <div>
+          <h3>Público</h3>
+          <p>Jovens e adolescentes do departamento ADONAI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="card versiculo">
+    <p class="rotulo">Versículo tema</p>
+    <h2 class="tema">De volta ao Lar</h2>
+    <blockquote>"Mas a nossa cidade está nos céus, de onde também esperamos o Salvador, o Senhor Jesus Cristo."</blockquote>
+    <p class="referencia">Filipenses 3:20 (ARC)</p>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="card centro">
+    <h2>Quem nos abençoou</h2>
+    <p>Escaneie o QR Code da camiseta do retiro ou acesse a página dos nossos parceiros para conhecer as empresas que ofertaram a camiseta.</p>
+    <div class="acoes">
+      <a class="botao botao-laranja" href="parceiros.html">Ver nossos parceiros</a>
+      <a class="botao" href="index.html">Voltar ao início</a>
+    </div>
+  </div>
+</section>
+
+<footer class="rodape">
+  <p><strong>ADONAI · Grupo de Jovens e Adolescentes</strong></p>
+  <p>Congregação Moradias Coqueiros 2 · Igreja Evangélica Assembleia de Deus em Curitiba</p>
+  <p><a href="politica-de-privacidade.html">Política de Privacidade</a> · <a href="termos-de-uso.html">Termos de Uso</a></p>
+  <p class="direitos">© 2026 ADONAI. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  // Retiro: saída na sexta-feira, 6/11/2026, às 20h (horário de Brasília)
+  const alvo = new Date("2026-11-06T20:00:00-03:00").getTime();
+
+  function atualizarContagem() {
+    const diff = alvo - Date.now();
+    if (diff <= 0) {
+      document.getElementById("contagem").hidden = true;
+      document.getElementById("fim").hidden = false;
+      clearInterval(timer);
+      return;
+    }
+    const dias = Math.floor(diff / 86400000);
+    const horas = Math.floor((diff % 86400000) / 3600000);
+    const minutos = Math.floor((diff % 3600000) / 60000);
+    const segundos = Math.floor((diff % 60000) / 1000);
+    document.getElementById("dias").textContent = dias;
+    document.getElementById("horas").textContent = String(horas).padStart(2, "0");
+    document.getElementById("minutos").textContent = String(minutos).padStart(2, "0");
+    document.getElementById("segundos").textContent = String(segundos).padStart(2, "0");
+  }
+
+  atualizarContagem();
+  const timer = setInterval(atualizarContagem, 1000);
+</script>
+
+</body>
+</html>
